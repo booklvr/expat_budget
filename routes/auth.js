@@ -28,5 +28,18 @@ router.post("/register", (req, res) => {
     });
 });
 
+//show login form
+router.get("/login", (req, res) => {
+    res.render("login");
+});
+
+router.post("/login", passport.authenticate("local",
+    {
+        successRedirect: "/budget",
+        failureRedirect: "/login"
+    }), (req, res) => {
+});
+
+
 
 module.exports = router;

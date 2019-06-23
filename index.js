@@ -1,4 +1,5 @@
 var express             = require("express"),
+    path                = require("path"),
     app                 = express(),
     bodyParser          = require("body-parser"),
     mongoose            = require("mongoose"),
@@ -22,7 +23,7 @@ mongoose.connect(url, {useNewUrlParser: true});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
 // PASSPORT CONFIGURATION
