@@ -1,0 +1,19 @@
+{
+  "name": "expat_budget",
+  "version": "1.0.0",
+  "description": "this is a budget webiste for expats for tracking expenses local and home country currencies as well as current exchange rates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/booklvr/expat_budget.git"
+  },
+  "author": "Nick de Waal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/booklvr/expat_budget/issues"
+  },
+  "homepage": "https://github.com/booklvr/expat_budget#readme"
+}
