@@ -10,8 +10,8 @@ var express             = require("express"),
 
 
 // requiring routes
-var authRoutes = require("./routes/auth");
-
+var authRoutes = require("./routes/auth"),
+    budgetRoutes = require("./routes/budget");
 
 // CONFIGURE APP
 
@@ -26,6 +26,11 @@ app.use(express.static(`${__dirname}/public`));
 app.use(methodOverride("_method"));
 
 // PASSPORT CONFIGURATION
+app.use(require("express-session")({
+    secret: "expat budget app!",
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -39,7 +44,14 @@ passport.deserializeUser(User.deserializeUser());
 //     next();
 // });
 
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
+
 app.use("/", authRoutes);
+app.use("/budget", budgetRoutes);
+// app.use("/budget", budgetRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, process.env.IP, () => {
