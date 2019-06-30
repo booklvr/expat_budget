@@ -33,6 +33,7 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
+//handling login logic
 router.post("/login", passport.authenticate("local",
     {
         successRedirect: "/budget",
@@ -40,6 +41,11 @@ router.post("/login", passport.authenticate("local",
     }), (req, res) => {
 });
 
+//handling logout logic
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/login");
+});
 
 
 // router.get("/budget", (req, res) => {
