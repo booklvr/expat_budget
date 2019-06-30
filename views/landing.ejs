@@ -8,11 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
 </head>
 <body>
+    <% include ./partials/nav %>
 
     <div id="landing-header">
         <h1>Welcome to Expat Budget!</h1>
-        <a href="#" class="btn btn-lg btn-success">Login</a>
-        <a href="#" class="btn btn-lg btn-success">Sign Up</a>
+        <a href="/login" class="btn btn-lg btn-success">Login</a>
+        <a href="/register" class="btn btn-lg btn-success">Sign Up</a>
     </div>
 
     <ul class="slideshow">
@@ -23,5 +24,5 @@
       <li></li>
     </ul>
 
-<% include partials/footer %>
+<% include ./partials/footer %>
 

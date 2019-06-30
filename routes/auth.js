@@ -42,4 +42,10 @@ router.post("/login", passport.authenticate("local",
 
 
 
+// router.get("/budget", (req, res) => {
+//     res.render("budget");
+// })
+
+
+
 module.exports = router;

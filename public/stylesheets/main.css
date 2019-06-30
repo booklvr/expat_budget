@@ -1,16 +1,12 @@
-.thumbnail img {
-    width: 100%;
-}
-
-.thumbnail {
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-
-.thumbnail .caption-full {
-    padding: 9px;
+html,
+body {
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
 }
 
-.delete-form {
-    display: inline;}
-}

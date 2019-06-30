@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/budget.css">
+    <title>Expat Budget</title>
+</head>
+<body>
+
+<% include ./partials/nav %>
+<div class="budget__container">
+    <div class="top">
+        <div class="budget">
+            <div class="budget__title">
+                Availble Budget on&nbsp;<span class="budget__title--month">January</span>
+            </div>
+            <div class="budget__value">+ 2,345.64</div>
+
+            <div class="budget__income">
+                <div class="budget__income--text">Income</div>
+                <div class="right">
+                    <div class="budget__income--value">+ 4,300.00</div>
+                    <div class="budget__income--percentage">&nbsp;...</div>
+                </div>
+            </div>
+
+           <div class="budget__expenses">
+                <div class="budget__expenses--text">Expense</div>
+                <div class="left">
+                    <div class="budget__expenses--value">+ 1,954.00</div>
+                    <div class="budget__expenses--percentage">&nbsp;...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="add">
+            <div class="add__containter">
+                <form action="/budget" method="post">
+                    <select name="inc_or_exp" id="" class="add__type">
+                        <option value="income" selected>+</option>
+                        <option value="expenses" selected>-</option>
+                    </select>
+                    <input type="text" class="add__description" name="item" placeholder="Add Description">
+                    <input type="number" class="add__value" name="price" placeholder="Value">
+                    <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="container clearfix">
+            <div class="income">
+                <h2 class="budget__list__title budget__list__title--income">Income</h2>
+                <div class="income__list">
+
+                    <!--this part will be removed later by javascript -->
+                    <div class="item" id="income-0">
+                        <div class="item__description">Salary</div>
+                        <div class="right clearfix">
+                            <div class="item__value">+ 2,100.00</div>
+                            <div class="item__percentage">21%</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item" id="income-0">
+                        <div class="item__description">Salary</div>
+                        <div class="right clearfix">
+                            <div class="item__value">+ 2,100.00</div>
+                            <div class="item__percentage">21%</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item" id="income-0">
+                        <div class="item__description">Salary</div>
+                        <div class="right clearfix">
+                            <div class="item__value">+ 2,100.00</div>
+                            <div class="item__percentage">21%</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--this part will be removed later by javascript -->
+
+                </div>
+            </div>
+
+            <div class="expenses">
+                <h2 class="budget__list__title budget__list__title--expenses">Expenses</h2>
+                <div class="expenses__list">
+
+                    <!-- this part will be removed by javascript-->
+                    <div class="item" id="expense-0">
+                        <div class="item__description">Apartment Rent</div>
+                        <div class="right clearfix">
+                            <div class="item__value">- 900.00</div>
+                            <div class="item__percentage">21%</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--this part will be removed by javascript -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="module" src="../js/controller.js"></script>
+<% include ./partials/footer %>

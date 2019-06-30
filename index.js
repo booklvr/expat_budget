@@ -19,6 +19,7 @@ var authRoutes = require("./routes/auth"),
 //configure mongooose
 var url = process.env.DATABASEURL || "mongodb://localhost:27017/expat_budget";
 mongoose.connect(url, {useNewUrlParser: true});
+// mongoose.set('useFindAndModify', false); // so that i can insert into income and expense array
 
 
 app.set("view engine", "ejs");
@@ -54,7 +55,7 @@ app.use("/", authRoutes);
 app.use("/budget", budgetRoutes);
 // app.use("/budget", budgetRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, process.env.IP, () => {
     console.log(`App listening to ${PORT}....`);
     console.log('Press Ctrl+C to quit');
