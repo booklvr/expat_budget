@@ -1,5 +1,3 @@
-
-
 var UIController = (function() {
 
     var DOMStrings = {
@@ -12,7 +10,7 @@ var UIController = (function() {
 
             now = new Date();
 
-            day = now.getDay();
+            day = now.getUTCDate();
 
             var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

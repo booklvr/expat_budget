@@ -70,7 +70,9 @@
                                 <div class="item__value">+ <%= item.price %></div>
                                 <div class="item__percentage">21%</div>
                                 <div class="item__delete">
-                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                    <form class="delete-form" action="/budget/<%= item._id %>?_method=DELETE" method="post">
+                                        <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

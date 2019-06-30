@@ -19,7 +19,7 @@ var authRoutes = require("./routes/auth"),
 //configure mongooose
 var url = process.env.DATABASEURL || "mongodb://localhost:27017/expat_budget";
 mongoose.connect(url, {useNewUrlParser: true});
-// mongoose.set('useFindAndModify', false); // so that i can insert into income and expense array
+mongoose.set('useFindAndModify', false); // so that i can insert into income and expense array
 
 
 app.set("view engine", "ejs");
