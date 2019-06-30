@@ -9,7 +9,16 @@ router.get("/", (req, res) => {
     // User.findById(req.user.id).populate("income").exec((err, foundIncome) => {
     //     if (err)
     // })
-    res.render("budget");
+    console.log(req.user._id);
+    User.findById(req.user._id, {}, (err, userData) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("**********************");
+            console.log("user data");
+            res.render("budget", {userData: userData});
+        }
+    });
 });
 
 router.post("/", middlewareObj.isLoggedIn, (req, res) => {

@@ -11,6 +11,10 @@
 <body>
 
 <% include ./partials/nav %>
+
+<h2><%= userData.username %></h2>
+
+
 <div class="budget__container">
     <div class="top">
         <div class="budget">
@@ -58,39 +62,20 @@
                 <h2 class="budget__list__title budget__list__title--income">Income</h2>
                 <div class="income__list">
 
-                    <!--this part will be removed later by javascript -->
-                    <div class="item" id="income-0">
-                        <div class="item__description">Salary</div>
-                        <div class="right clearfix">
-                            <div class="item__value">+ 2,100.00</div>
-                            <div class="item__percentage">21%</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                    <!-- loop to run through income items from database -->
+                    <% userData.income.forEach((item, index) => {%>
+                        <div class="item" id="income-<%= index %>">
+                            <div class="item__description"><%= item.item %></div>
+                            <div class="right">
+                                <div class="item__value">+ <%= item.price %></div>
+                                <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item" id="income-0">
-                        <div class="item__description">Salary</div>
-                        <div class="right clearfix">
-                            <div class="item__value">+ 2,100.00</div>
-                            <div class="item__percentage">21%</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="income-0">
-                        <div class="item__description">Salary</div>
-                        <div class="right clearfix">
-                            <div class="item__value">+ 2,100.00</div>
-                            <div class="item__percentage">21%</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--this part will be removed later by javascript -->
-
+                    <% }) %>
+                     <!--end of loop -->
                 </div>
             </div>
 
@@ -98,18 +83,20 @@
                 <h2 class="budget__list__title budget__list__title--expenses">Expenses</h2>
                 <div class="expenses__list">
 
-                    <!-- this part will be removed by javascript-->
-                    <div class="item" id="expense-0">
-                        <div class="item__description">Apartment Rent</div>
-                        <div class="right clearfix">
-                            <div class="item__value">- 900.00</div>
-                            <div class="item__percentage">21%</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                     <!-- loop to run through income items from database -->
+                    <% userData.expenses.forEach((item, index) => {%>
+                        <div class="item" id="expense-<%= index %>">
+                            <div class="item__description"><%= item.item %></div>
+                            <div class="right">
+                                <div class="item__value"><%= item.price %></div>
+                                <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--this part will be removed by javascript -->
+                    <% }) %>
+                    <!--end of loop -->
                 </div>
             </div>
         </div>
