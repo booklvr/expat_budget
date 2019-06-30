@@ -43,9 +43,14 @@ router.post("/", middlewareObj.isLoggedIn, (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
+
+    var obj = {};
+    obj[req.body.inc_or_exp] = { _id: req.params.id };
+
     User.findByIdAndUpdate(
         { _id: req.user._id },
-        { "$pull": { "income": { "_id": req.params.id } }},
+        // { "$pull": { "income": { "_id": req.params.id } }},
+        { "$pull": obj},
         { safe: true, multi:true },
         function(err, obj) {
             if(err) {

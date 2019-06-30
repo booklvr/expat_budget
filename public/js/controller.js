@@ -11,13 +11,20 @@ var controller = (function(budget, UI) {
     // budget();
 
     var setupEventListeners = function() {
-        var DOM = UICtrl.getDOMStrings();
+        var DOM = UI.getDOMStrings();
+
+        document.querySelector(DOM.showForm).addEventListener('click', UI.showUpdateForm);
     };
+
+    var  alertRefresh = function() {
+        document.querySelector(DOM.toggle)
+    }
 
     return {
         init: function () {
             console.log("Application has started");
             UI.displayMonth();
+            setupEventListeners();
         }
     };
 

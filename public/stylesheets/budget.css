@@ -202,8 +202,8 @@
 
 .item:nth-child(even) {background-color: #f7f7f7; }
 
-.item__description: {
-
+.item__description {
+    font-size: 20px;
 }
 
 .item__value {
@@ -223,13 +223,15 @@
 
 .income .item__value,
 .income .item__percentage,
-.income .item__delete--btn {
+.income .item__delete--btn,
+.income .update--btn {
     color: #28B9b5;
 }
 
 .expenses .item__value,
 .expenses .item__percentage,
-.expenses .item__delete--btn {
+.expenses .item__delete--btn,
+.expenses .update--btn {
     color: #ff5049;
 }
 
@@ -237,7 +239,12 @@
     margin-left: auto;
 }
 
-.item__delete--btn {
+.item__update {
+    margin-right: 10px;
+}
+
+.item__delete--btn,
+.update--btn {
     font-size: 22px;
     background: none;
     border: none;
@@ -247,14 +254,66 @@
     display: none;
 }
 
-.item__delete--btn:focus {outline: none;}
-.item__delete--btn:active {transform: translateY(2px); }
+.item__delete--btn:focus,
+.update--btn:focus {outline: none;}
+
+.item__delete--btn:active,
+.update--btn:active, {transform: translateY(2px); }
 
 .item:hover .item__delete--btn {display: block;}
+.item:hover .update--btn {display: block;}
 .item:hover .item__value { transform: translateX(-20px); }
 .item:hover .item__percentage {transform: translateX(-20px); }
 
+.update__container {
+    display: flex;
+    border: 1px solid #28B9b5;
+}
 
+.form__update {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    outline: none;
+    padding: 5px;
+}
+
+.form__update input[type="text"] {
+    font-size: 22px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-width: 0px;
+}
+
+.update__submit--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    color: #28B9b5;
+    cursor: pointer;
+    vertical-align: middle;
+    line-height: 1.1;
+    margin-right: 7px;
+}
+
+.update__description {
+    margin-left: 5px;
+}
+
+.update__price {
+    width: 50px;
+    margin-left: auto;
+    margin-right: 25px;
+    color: #28B9b5;
+}
+
+.toggle__form {
+    display: none;
+}
 
 
 
