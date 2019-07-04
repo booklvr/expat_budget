@@ -265,12 +265,12 @@
 .item:hover .item__value { transform: translateX(-20px); }
 .item:hover .item__percentage {transform: translateX(-20px); }
 
-.update__container {
-    display: flex;
-    border: 1px solid #28B9b5;
+.hide__form {
+    display: none;
 }
 
 .form__update {
+    border: 1px solid #28B9B5;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -305,14 +305,10 @@
 }
 
 .update__price {
-    width: 50px;
     margin-left: auto;
-    margin-right: 25px;
+    margin-right: 40px;
     color: #28B9b5;
-}
-
-.toggle__form {
-    display: none;
+    text-align: right;
 }
 
 

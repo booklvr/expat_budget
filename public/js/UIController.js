@@ -2,7 +2,7 @@ var UIController = (function() {
 
     var DOMStrings = {
         dateLabel: '.budget__title--month',
-        showForm: '.show__form',
+        container: '.container',
         toggleForm: '.toggle__form'
     };
 
@@ -23,14 +23,44 @@ var UIController = (function() {
         },
 
         showUpdateForm: function() {
-            console.log('you made it to the update form');
-            var x = document.querySelector(DOMStrings.toggleForm);
-            console.log(x.style.display);
-            if (x.style.display === 'none') {
-                x.style.display = 'flex';
-            } else {
-                x.style.display = 'none';
-            }
+
+            var showItem = event.target.parentNode.parentNode.parentNode.parentNode.nextElementSibling;
+
+
+            if (showItem && showItem.classList.contains("update__form")) {
+                if (showItem.classList.contains('hide__form')) {
+                    showItem.classList.remove("hide__form");
+                    console.log(showItem.className);
+                } else {
+                    showItem.classList.add("class", "hide__form");
+                }
+            };
+
+
+           // showItem.setAttribute("class", "toggle__form");
+           // console.log(itemID.className);
+
+
+
+            // console.log(typeof itemID);
+            // console.log(itemID.style);
+            // console.log(itemID.class);
+
+            // if (itemID.style.display === 'none') {
+            //     itemID.style.display = 'flex';
+            // } else {
+            //     itemID.style.display = 'none';
+            // }
+
+            // itemID.style.display = "flex";
+
+            // var x = document.querySelector(DOMStrings.toggleForm);
+            // console.log(x.style.display);
+            // if (x.style.display === 'none') {
+            //     x.style.display = 'flex';
+            // } else {
+            //     x.style.display = 'none';
+            // }
         },
 
 
