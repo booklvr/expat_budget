@@ -26,11 +26,12 @@ var UIController = (function() {
 
             var showItem = event.target.parentNode.parentNode.parentNode.parentNode.nextElementSibling;
 
-
+            // if show form if hidden
             if (showItem && showItem.classList.contains("update__form")) {
                 if (showItem.classList.contains('hide__form')) {
                     showItem.classList.remove("hide__form");
-                    console.log(showItem.className);
+                    showItem.firstElementChild.firstElementChild.focus();
+                    // console.log(showItem.className);
                 } else {
                     showItem.classList.add("class", "hide__form");
                 }

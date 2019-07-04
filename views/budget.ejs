@@ -81,9 +81,9 @@
                         </div>
                         <div class="update__form hide__form" id="form__<%= item._id %>">
                             <form class="form__update" action="/budget/<%= item._id %>?_method=PUT" method="post">
-                                <input class="update__description" type="text" name="item" value="<%= item.item %>"/>
+                                <input class="update__description" type="text" name="item" value="<%= item.item %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
                                 <input class="update__price" type="text" name="price" value=" <%= item.price %>"/>
-                                <button class="update__submit--btn hide__form"><i class="ion-ios-checkmark-outline"></i></button>
+                                <button class="update__submit--btn"><i class="ion-ios-checkmark-outline"></i></button>
                             </form>
                         </div>
                     <% }) %>

@@ -265,6 +265,10 @@
 .item:hover .item__value { transform: translateX(-20px); }
 .item:hover .item__percentage {transform: translateX(-20px); }
 
+.update__form {
+
+}
+
 .hide__form {
     display: none;
 }
@@ -287,6 +291,8 @@
     box-shadow: none;
     border: none;
     border-width: 0px;
+    width: 40%;
+
 }
 
 .update__submit--btn {
