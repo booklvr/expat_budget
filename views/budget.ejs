@@ -20,21 +20,21 @@
             <div class="budget__title">
                 Availble Budget on&nbsp;<span class="budget__title--month">January</span>
             </div>
-            <div class="budget__value">+ 2,345.64</div>
+            <div class="budget__value"><%= data.budget %></div>
 
             <div class="budget__income">
                 <div class="budget__income--text">Income</div>
                 <div class="right">
-                    <div class="budget__income--value">+ 4,300.00</div>
-                    <div class="budget__income--percentage">&nbsp;...</div>
+                    <div class="budget__income--value">+ <%= data.totals.inc %></div>
+                    <div class="budget__income--percentage"></div>
                 </div>
             </div>
 
            <div class="budget__expenses">
                 <div class="budget__expenses--text">Expense</div>
                 <div class="left">
-                    <div class="budget__expenses--value">+ 1,954.00</div>
-                    <div class="budget__expenses--percentage">&nbsp;...</div>
+                    <div class="budget__expenses--value">- <%= data.totals.exp %></div>
+                    <div class="budget__expenses--percentage">&nbsp; <%= data.percentage%>%</div>
                 </div>
             </div>
         </div>
@@ -62,27 +62,28 @@
                 <div class="income__list">
 
                     <!-- loop to run through income items from database -->
-                    <% userData.income.forEach((item, index) => {%>
+                    <% data.allItems.inc.forEach((item, index) => {%>
                         <div class="item" id="income-<%= index %>">
                             <div class="item__description"><%= item.item %></div>
                             <div class="right">
-                                <div class="item__value">+ <%= item.price %></div>
-                                <div class="item__percentage">21%</div>
+                                <div class="item__value">+ <%= item.value %></div>
+                                <div class="item__percentage"><%= item.percentage %>%</div>
                                 <div class="item__update">
                                     <button class="update--btn show__form"><i class="ion-ios-refresh-outline"></i></button>
                                 </div>
                                 <div class="item__delete">
-                                    <form class="delete-form" action="/budget/<%= item._id %>?_method=DELETE" method="post">
+                                    <form class="delete-form" action="/budget/<%= item.id %>?_method=DELETE" method="post">
                                         <input type="hidden" name="inc_or_exp" value="income"/>
                                         <button class="item__delete--btn" id="sad"><i class="ion-ios-close-outline" id="happy"></i></button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="update__form hide__form" id="form__<%= item._id %>">
-                            <form class="form__update" action="/budget/<%= item._id %>?_method=PUT" method="post">
+                        <div class="update__form hide__form" id="form__<%= item.id %>">
+                            <form class="form__update" action="/budget/<%= item.id %>?_method=PUT" method="post">
                                 <input class="update__description" type="text" name="item" value="<%= item.item %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
-                                <input class="update__price" type="text" name="price" value=" <%= item.price %>"/>
+                                <input class="update__price" type="text" name="price" value=" <%= item.value %>"/>
+                                <input type="hidden" name="inc_or_exp" value="income">
                                 <button class="update__submit--btn"><i class="ion-ios-checkmark-outline"></i></button>
                             </form>
                         </div>
@@ -96,22 +97,30 @@
                 <div class="expenses__list">
 
                      <!-- loop to run through income items from database -->
-                    <% userData.expenses.forEach((item, index) => {%>
+                    <% data.allItems.exp.forEach((item, index) => {%>
                         <div class="item" id="expense-<%= index %>">
                             <div class="item__description"><%= item.item %></div>
                             <div class="right">
-                                <div class="item__value"><%= item.price %></div>
-                                <div class="item__percentage">21%</div>
+                                <div class="item__value"><%= item.value %></div>
+                                <div class="item__percentage"><%= item.percentage %>%</div>
                                 <div class="item__update">
                                     <button class="update--btn"><i class="ion-ios-refresh-outline"></i></button>
                                 </div>
                                 <div class="item__delete">
-                                    <form class="delete-form" action="/budget/<%= item._id %>?_method=DELETE" method="post">
+                                    <form class="delete-form" action="/budget/<%= item.id %>?_method=DELETE" method="post">
                                         <input type="hidden" name="inc_or_exp" value="expenses"/>
                                         <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                        <div class="update__form hide__form" id="form__<%= item.id %>">
+                            <form class="form__update" action="/budget/<%= item.id %>?_method=PUT" method="post">
+                                <input class="update__description" type="text" name="item" value="<%= item.item %>" onfocus="this.setSelectionRange(this.value.length, this.value.length);"/>
+                                <input class="update__price" type="text" name="price" value=" <%= item.value %>"/>
+                                <input type="hidden" name="inc_or_exp" value="expenses">
+                                <button class="update__submit--btn"><i class="ion-ios-checkmark-outline"></i></button>
+                            </form>
                         </div>
                     <% }) %>
                     <!--end of loop -->

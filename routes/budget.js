@@ -1,21 +1,34 @@
 var express = require("express");
 var router = express.Router();
 var middlewareObj = require("../middleware");
+var budgetHelper = require("./helpers/budgetHelper");
 
 
 //Index -- Show current budget
 router.get("/", middlewareObj.isLoggedIn, (req, res) => {
     // Get user's budget from DB
-    // User.findById(req.user.id).populate("income").exec((err, foundIncome) => {
-    //     if (err)
-    // })
-    User.findById(req.user._id, {}, (err, userData) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("budget", {userData: userData});
-        }
-    });
+    // User.findById(req.user._id, {}, (err, userData) => {
+    //     const data = budgetHelper.populateData(userData);
+
+    //     // console.log(totalsObject);
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         res.render("budget", {userData: userData, data: data});
+    //     }
+    // });
+
+    //maybe use try catch instead of if else not sure yet. but it works. :)
+    try {
+        User.findById(req.user._id, {}, (err, userData) => {
+            const data = budgetHelper.populateData(userData);
+            res.render("budget", {userData: userData, data: data});
+
+        });
+    }
+    catch (err) {
+        return err;
+    }
 });
 
 router.post("/", middlewareObj.isLoggedIn, (req, res) => {
@@ -55,17 +68,18 @@ router.put('/:id', (req, res) => {
     // });
 
     User.findById(req.user.id, function(err, event) {
+        var type = req.body.inc_or_exp;
         if (err) {
             console.log(err);
         } else {
 
-            for (var i = 0; i < event.income.length; i++) {
-                console.log(event.income[i]._id);
+            for (var i = 0; i < event[type].length; i++) {
+                console.log(event[type][i]._id);
 
-                if (event.income[i]._id == req.params.id) {
+                if (event[type][i]._id == req.params.id) {
                     console.log("match");
-                    event.income[i].item = req.body.item;
-                    event.income[i].price = req.body.price;
+                    event[type][i].item = req.body.item;
+                    event[type][i].price = req.body.price;
                     event.save(function(err) {
                         if (err) {
                             console.log(err);
